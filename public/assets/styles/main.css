@@ -40,9 +40,20 @@ body {
   right: 0;
   height: 80px;
   display: flex;
+  align-items: flex-end;
   justify-content: center;
-  align-items: center;
   background-color: #03a9f4;
+  padding: 10px 2em;
+  font-size: 2em;
+  color: white;
+}
+
+.header span {
+  display: none;
+}
+
+.header img {
+  height: 60px;
 }
 
 .content {
@@ -146,6 +157,15 @@ body {
 }
 
 @media (min-width: 768px) {
+  .header {
+    justify-content: flex-start;
+  }
+
+  .header span {
+    display: block;
+    line-height: 80%;
+  }
+
   .articles-container {
     max-width: 900px;
     margin: 0 auto;
