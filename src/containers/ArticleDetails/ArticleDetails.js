@@ -1,5 +1,5 @@
 import React from 'react';
 
-const ArticlesView = () => <div className="articles-container">Hola</div>;
+const ArticlesView = ({ article }) => <div className="articles-container">{article.title}</div>;
 
 export default ArticlesView;
