@@ -13,7 +13,6 @@ const ArticleDetails = ({ article }) => (
       {article.content && article.content.split(/\r?\n/).join('\r\n\r\n')}
     </div>
     <div className="article-details--footer">
-      {`${article.published}`}
       Tags:
       {article.tags &&
         article.tags.map(tag => (
