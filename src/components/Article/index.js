@@ -10,7 +10,7 @@ const Article = ({ article }) => (
 );
 
 Article.propTypes = {
-  article: PropTypes.obj,
+  article: PropTypes.object,
 };
 
 export default Article;

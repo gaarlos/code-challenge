@@ -43,7 +43,8 @@ body {
   align-items: flex-end;
   justify-content: center;
   background-color: #03a9f4;
-  padding: 10px 2em;
+  box-shadow: 0 10px 20px lightgrey;
+  padding: 10px 0;
   font-size: 2em;
   color: white;
 }
@@ -74,6 +75,7 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
+  cursor: default;
   color: lightgrey;
 }
 
@@ -141,12 +143,10 @@ body {
 
 .article--header {
   border-bottom: 1px solid lightgrey;
-  font-size: inherit;
-  font-weight: 500;
-}
-
-.article--body {
-  text-align: justify;
+  font-size: large;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .article--footer {
@@ -159,6 +159,7 @@ body {
 @media (min-width: 768px) {
   .header {
     justify-content: flex-start;
+    padding: 10px 2em;
   }
 
   .header span {
