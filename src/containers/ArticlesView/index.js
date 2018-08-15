@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import {} from 'react-router-dom';
 import WithDidMountAction from 'components/WithDidMountAction';
+import WithLoading from 'components/WithLoading';
 import { getAllArticles } from 'store/actions/article';
 import ArticlesView from './ArticlesView';
 
@@ -17,4 +17,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(WithDidMountAction(ArticlesView));
+)(WithDidMountAction(WithLoading(ArticlesView)));
