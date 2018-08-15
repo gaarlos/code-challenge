@@ -51,10 +51,14 @@ body {
 
 .header span {
   display: none;
+  cursor: default;
+  user-select: none;
+  -moz-user-select: none;
 }
 
 .header img {
   height: 60px;
+  cursor: pointer;
 }
 
 .content {
@@ -167,7 +171,7 @@ body {
     line-height: 80%;
   }
 
-  .articles-container {
+  .content {
     max-width: 900px;
     margin: 0 auto;
   }
