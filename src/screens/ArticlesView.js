@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Article from 'components/Article';
 
 const ArticlesView = ({ articles }) => (
-  <div>{articles.map(article => JSON.stringify(article, null, 2))}</div>
+  <div className="articles-container">
+    {articles.map(article => <Article key={article.id} article={article} />)}
+  </div>
 );
 
 export default ArticlesView;

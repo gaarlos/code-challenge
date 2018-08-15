@@ -9,3 +9,65 @@ body {
 *::before {
   box-sizing: border-box;
 }
+
+#root {
+  position: relative;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #123456;
+}
+
+.content {
+  min-height: 100vh;
+  padding: 90px 0 60px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: lightgrey;
+}
+
+.articles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: space-around;
+  justify-items: center;
+}
+
+.article {
+  min-width: 250px;
+  max-width: 275px;
+  margin: 1em;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  box-shadow: 0 0 5px grey;
+}
+
+.article--header,
+.article--body,
+.article--footer {
+  padding: 1em;
+}
+
+@media (min-width: 768px) {
+  .articles-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}

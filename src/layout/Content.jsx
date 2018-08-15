@@ -1,16 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-const Content = ({ children }) => <StyledContent>{children}</StyledContent>;
+const Content = ({ children }) => <div className="content">{children}</div>;
 
 export default Content;
 
 Content.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };
-
-const StyledContent = styled.div`
-  min-height: 100vh;
-  padding: 90px 0;
-`;
