@@ -5,13 +5,13 @@ import routes from 'config/routes';
 import { Header, Content, Footer } from 'layout';
 
 const AppWithLayout = () => [
-  <Header />,
-  <Content>
+  <Header key="header" />,
+  <Content key="content">
     {routes.map(({ path, pathId, component }) => (
       <Route path={path} key={pathId} exact component={component} />
     ))}
   </Content>,
-  <Footer />,
+  <Footer key="footer" />,
 ];
 
 export default AppWithLayout;

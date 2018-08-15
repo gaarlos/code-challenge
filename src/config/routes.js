@@ -3,7 +3,7 @@ import ArticlesView from 'containers/ArticlesView';
 export default [
   {
     path: '/',
-    pathId: '/',
+    pathId: 'articles-view',
     component: ArticlesView,
   },
 ];
