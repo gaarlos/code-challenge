@@ -8,7 +8,7 @@ export const ARTICLES_QUERY = `{
 }`;
 
 export const ARTICLE_BY_ID_QUERY = articleId => `{
-  article(id: ${articleId}) {
+  article(id: "${articleId}") {
     author
     excerpt
     id
