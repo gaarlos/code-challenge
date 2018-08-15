@@ -5,11 +5,16 @@ const ArticleDetails = ({ article }) => (
   <div className="article-details">
     <div className="article-details--header">
       <span className="title">{article.title}</span>
-      <span className="author">{article.author}</span>
+      <span className="author">{`${article.author} - ${
+        article.published ? 'Publicado' : 'Sin publicar'
+      }`}</span>
     </div>
-    <div className="article-details--body">{article.content}</div>
+    <div className="article-details--body">
+      {article.content && article.content.split(/\r?\n/).join('\r\n\r\n')}
+    </div>
     <div className="article-details--footer">
-      {article.published}
+      {`${article.published}`}
+      Tags:
       {article.tags &&
         article.tags.map(tag => (
           <span key={tag} className="tag">

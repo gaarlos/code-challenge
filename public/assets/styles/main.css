@@ -180,7 +180,8 @@ body {
 }
 
 .article-details--body {
-  padding: 2em 0;
+  padding-bottom: 1em;
+  white-space: pre-line;
 }
 
 .tag {
