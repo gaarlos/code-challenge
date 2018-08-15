@@ -1,3 +1,22 @@
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -23,12 +42,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #123456;
+  background-color: #03a9f4;
 }
 
 .content {
   min-height: 100vh;
   padding: 90px 0 60px;
+}
+
+.content div {
+  animation: fadein 0.25s;
 }
 
 .footer {
@@ -43,6 +66,37 @@ body {
   color: lightgrey;
 }
 
+.loading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.loading::after,
+.loading::before {
+  opacity: 1;
+  content: "";
+  border: 10px solid;
+  border-radius: 50%;
+  height: 4em;
+  width: 4em;
+  position: absolute;
+  top: 25%;
+  left: calc(50% - 2em);
+  transition: opacity 300ms;
+}
+
+.loading::before {
+  border-color: #03a9f478;
+}
+
+.loading::after {
+  border-color: #03a9f4 transparent transparent transparent;
+  animation: loading 1s linear infinite;
+}
+
 .articles-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -51,11 +105,19 @@ body {
 }
 
 .article {
+  display: flex;
+  flex-direction: column;
   min-width: 250px;
   max-width: 275px;
   margin: 1em;
   border: 1px solid lightgrey;
   border-radius: 3px;
+  box-shadow: 0 0 5px lightgrey;
+  cursor: pointer;
+  transition: box-shadow 250ms;
+}
+
+.article:hover {
   box-shadow: 0 0 5px grey;
 }
 
@@ -63,6 +125,24 @@ body {
 .article--body,
 .article--footer {
   padding: 1em;
+  user-select: none;
+}
+
+.article--header {
+  border-bottom: 1px solid lightgrey;
+  font-size: inherit;
+  font-weight: 500;
+}
+
+.article--body {
+  text-align: justify;
+}
+
+.article--footer {
+  margin-top: auto;
+  text-align: right;
+  color: grey;
+  font-size: 0.75em;
 }
 
 @media (min-width: 768px) {
