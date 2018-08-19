@@ -220,6 +220,24 @@ body {
   background-color: #ccc;
 }
 
+.error-page {
+  padding: 5em;
+}
+
+.error-code,
+.error-message {
+  text-align: center;
+  color: #c5ecfe;
+}
+
+.error-code {
+  font-size: 10em;
+}
+
+.error-message {
+  font-size: 3em;
+}
+
 @media (min-width: 768px) {
   .header {
     justify-content: flex-start;
