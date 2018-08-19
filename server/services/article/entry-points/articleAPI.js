@@ -1,7 +1,7 @@
 import express from 'express';
 import GraphHTTP from 'express-graphql';
-import FetchArticleSchema from '../schemas/fetchArticle';
-import MutateArticleSchema from '../schemas/mutateArticle';
+import FetchArticleSchema from '../domain/fetchArticleService';
+import MutateArticleSchema from '../domain/mutateArticleService';
 
 const router = express.Router();
 const mutateRoutes = ['/update', '/delete', '/add'];
