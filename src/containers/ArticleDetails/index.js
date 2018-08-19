@@ -4,10 +4,18 @@ import WithLoading from 'components/WithLoading';
 import { getArticleById, deleteArticle } from 'store/actions/article';
 import ArticleDetails from './ArticleDetails';
 
-const mapStateToProps = ({ article, loading }) => ({
-  article: article.article || {},
-  loading,
-});
+const mapStateToProps = ({ article, loading }) => {
+  const { title = '', author = '', published = false, content = '', tags = [] } = article.article;
+
+  return ({
+    title,
+    author,
+    published,
+    content,
+    tags,
+    loading,
+  });
+};
 
 const mapDispatchToProps = (dispatch, { match }) => {
   const articleId = match.params.id;
