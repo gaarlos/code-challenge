@@ -110,6 +110,22 @@ body {
   animation: loading 1s linear infinite;
 }
 
+.remove-button {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  background-color: lightcoral;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.25s;
+}
+
+.remove-button:hover {
+  opacity: 0.9;
+}
+
 .articles-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -152,6 +168,7 @@ body {
 }
 
 .article--footer {
+  position: relative;
   margin-top: auto;
   text-align: right;
   color: grey;
@@ -170,21 +187,6 @@ body {
   padding: 1em 0;
   border-bottom: 1px solid lightgrey;
   color: #333;
-}
-
-.article-details--header .remove-button {
-  position: absolute;
-  right: 0;
-  padding: 0.5em 1em;
-  border-radius: 5px;
-  background-color: lightcoral;
-  color: white;
-  cursor: pointer;
-  transition: opacity 0.25s;
-}
-
-.article-details--header .remove-button:hover {
-  opacity: 0.9;
 }
 
 .article-details--header .title {

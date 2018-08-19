@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import WithDidMountAction from 'components/WithDidMountAction';
 import WithLoading from 'components/WithLoading';
-import { getArticleById, deleteArticle } from 'store/actions/article';
+import { getArticleById } from 'store/actions/article';
 import ArticleDetails from './ArticleDetails';
 
 const mapStateToProps = ({ article, loading }) => {
@@ -22,7 +22,6 @@ const mapDispatchToProps = (dispatch, { match }) => {
 
   return {
     handleDidMountAction: () => dispatch(getArticleById({ articleId })),
-    deleteArticle: () => dispatch(deleteArticle({ articleId })),
   };
 };
 

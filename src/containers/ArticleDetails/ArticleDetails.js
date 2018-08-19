@@ -49,21 +49,12 @@ class ArticleDetails extends React.Component {
 
   render() {
     const { author, published, content, tags, title } = this.state;
-    const { deleteArticle } = this.props;
 
     return (
       <div className="article-details">
         <div className="article-details--header">
           <span className="title">{title}</span>
-          <span className="author">{`${author} - ${
-            published ? 'Published' : 'Not published'
-          }`}</span>
-          <div className="save-button" onClick={deleteArticle}>
-            Remove
-          </div>
-          <div className="remove-button" onClick={deleteArticle}>
-            Remove
-          </div>
+          <span className="author">{`${author} - ${published ? 'Published' : 'Not published'}`}</span>
         </div>
         <div className="article-details--body">
           {content.split(/\r?\n/).join('\r\n\r\n')}
@@ -89,7 +80,6 @@ export default ArticleDetails;
 ArticleDetails.propTypes = {
   author: PropTypes.string,
   content: PropTypes.string,
-  deleteArticle: PropTypes.func,
   published: PropTypes.bool,
   tags: PropTypes.array,
   title: PropTypes.string,

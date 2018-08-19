@@ -11,6 +11,7 @@ import {
   GET_ARTICLE_BY_ID,
   GET_ARTICLE_BY_ID_SUCCESS,
   DELETE_ARTICLE,
+  DELETE_ARTICLE_SUCCESS,
 } from 'store/actions/article';
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -49,7 +50,7 @@ function fetchArticles$() {
 
 function deleteArticle$({ payload }) {
   const query = DELETE_ARTICLE_QUERY(payload.articleId);
-  return sagaWithLoader({ query, url: '/delete' });
+  return sagaWithLoader({ query, url: '/delete', successAction: DELETE_ARTICLE_SUCCESS });
 }
 
 export function* fetchAllArticles() {
