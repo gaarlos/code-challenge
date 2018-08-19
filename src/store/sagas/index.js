@@ -1,10 +1,11 @@
 import { all } from 'redux-saga/effects';
-import { fetchAllArticles, fetchArticleById } from './article';
+import { fetchAllArticles, fetchArticleById, deleteArticleById } from './article';
+import { history } from 'app/AppWithNavigation';
 
 export default function* rootSaga() {
   try {
-    yield all([fetchAllArticles(), fetchArticleById()]);
+    yield all([fetchAllArticles(), fetchArticleById(), deleteArticleById()]);
   } catch (e) {
-    console.log(e);
+    history.replace(`/error/${404}`);
   }
 }

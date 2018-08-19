@@ -17,8 +17,8 @@ export const ARTICLE_BY_ID_QUERY = articleId => `{
   }
 }`;
 
-export const DELETE_ARTICLE = articleId => `{
-  deketeArticle(id: "${articleId}"): {
+export const DELETE_ARTICLE_QUERY = articleId => `{
+  deleteArticle(id: "${articleId}") {
     id
   }
 }`;
@@ -32,7 +32,7 @@ export const UPDATE_ARTICLE = ({ id, author, content, excerpt, published, tags, 
     published: "${published}",
     tags: "${tags}",
     title: "${title}",
-  ): {
+  ) {
     author
     content
     excerpt
@@ -51,7 +51,7 @@ export const ADD_ARTICLE = ({ author, content, excerpt, published, tags, title }
     published: "${published}",
     tags: "${tags}",
     title: "${title}",
-  ): {
+  ) {
     author
     content
     excerpt

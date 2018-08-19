@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-export default function(query) {
-  return new Promise((resolve, reject) => {
+const API_URL = process.env.API_URL || 'http://localhost:4000/api';
+
+export const axiosRequest = ({ query, url }) =>
+  new Promise((resolve, reject) => {
     axios
-      .post('http://localhost:4000/api/article', { query })
+      .post(`${API_URL}/${url}`, { query })
       .then(({ data }) => {
         const { errors } = data;
 
@@ -15,4 +17,11 @@ export default function(query) {
       })
       .catch(error => reject(error));
   });
-}
+
+export const articleRequest = ({ query, url = '' }) =>
+  axiosRequest({
+    query,
+    url: `/article${url}`,
+  });
+
+export default axiosRequest;

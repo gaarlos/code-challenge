@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ArticleDetails = ({ article }) => (
+const ArticleDetails = ({ article, deleteArticle }) => (
   <div className="article-details">
     <div className="article-details--header">
       <span className="title">{article.title}</span>
       <span className="author">{`${article.author} - ${
-        article.published ? 'Publicado' : 'Sin publicar'
+        article.published ? 'Published' : 'Not published'
       }`}</span>
+      <div className="remove-button" onClick={deleteArticle}>
+        Remove
+      </div>
     </div>
     <div className="article-details--body">
       {article.content && article.content.split(/\r?\n/).join('\r\n\r\n')}
@@ -35,4 +38,5 @@ ArticleDetails.propTypes = {
     published: PropTypes.bool,
     tags: PropTypes.array,
   }),
+  deleteArticle: PropTypes.func,
 };
