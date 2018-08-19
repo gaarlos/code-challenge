@@ -1,4 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+import { history } from 'app/AppWithNavigation';
 
 import { ARTICLES_QUERY, ARTICLE_BY_ID_QUERY } from 'graphql/queries';
 import request from 'graphql/request';
@@ -31,7 +32,7 @@ function* sagasHelper(query, successAction) {
 
     yield put({ type: SET_LOADING, payload: false });
   } catch (e) {
-    window.location.replace(`error/${404}`);
+    history.replace(`/error/${404}`);
   }
 }
 
