@@ -17,13 +17,21 @@ function* sagasHelper(query, successAction) {
   try {
     yield put({ type: SET_LOADING, payload: true });
     yield call(delay, 500);
-    const response = yield call(() => request(query).then(({ data }) => data));
+    const response = yield call(() =>
+      request(query)
+        .then(({ data }) => data)
+        .catch(err => {
+          throw new Error(err);
+        }),
+    );
+
     if (successAction) {
       yield put({ type: successAction, response });
     }
+
     yield put({ type: SET_LOADING, payload: false });
   } catch (e) {
-    yield;
+    window.location.replace(`error/${404}`);
   }
 }
 
