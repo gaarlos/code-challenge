@@ -18,7 +18,7 @@ const MutateArticle = new GraphQLObjectType({
         tags: { type: new GraphQLList(GraphQLString) },
         title: { type: GraphQLString },
       },
-      resolve: (root, { id, ...article }) => db.Article.findByIdAndUpdate(id, article),
+      resolve: (root, { id, ...article }) => db.Article.findByIdAndUpdate(id, article, { new: true }),
     },
     deleteArticle: {
       type: articleType,
