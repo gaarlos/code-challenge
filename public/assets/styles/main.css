@@ -110,16 +110,28 @@ body {
   animation: loading 1s linear infinite;
 }
 
-.remove-button {
+.btn {
   padding: 0.5em 1em;
   border-radius: 5px;
-  background-color: lightcoral;
+  background-color: #123456;
   color: white;
   cursor: pointer;
   transition: opacity 0.25s;
 }
 
-.remove-button:hover {
+.remove-button {
+  background-color: lightcoral;
+}
+
+.save-button {
+  background-color: #64e26e;
+  position: absolute;
+  right: 0;
+  bottom: 1em;
+}
+
+.remove-button:hover,
+.save-button:hover {
   opacity: 0.9;
 }
 
@@ -290,5 +302,9 @@ body {
   .content {
     max-width: 900px;
     margin: 0 auto;
+  }
+
+  .save-button {
+    bottom: auto;
   }
 }

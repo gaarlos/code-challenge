@@ -6,7 +6,7 @@ const Article = ({ article, handleOnClick, deleteArticle }) => (
     <div className="article--header">{article.title}</div>
     <div className="article--body">{article.excerpt}</div>
     <div className="article--footer">
-      <div className="remove-button" onClick={(event) => deleteArticle({ articleId: article.id })(event)}>Remove</div>
+      <div className="btn remove-button" onClick={event => deleteArticle({ articleId: article.id })(event)}>Remove</div>
       {article.author}
     </div>
   </div>

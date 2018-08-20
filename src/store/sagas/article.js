@@ -63,7 +63,7 @@ function deleteArticle$({ payload }) {
 
 function updateArticle$({ payload }) {
   const query = UPDATE_ARTICLE_QUERY(payload);
-  return sagasWithLoader({ query, url: '/update', successAction: UPDATE_ARTICLE_SUCCESS });
+  return sagaWithLoader({ query, url: '/update', successAction: UPDATE_ARTICLE_SUCCESS });
 }
 
 export function* fetchAllArticles() {
