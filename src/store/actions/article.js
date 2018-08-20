@@ -38,20 +38,20 @@ export const deleteArticleSuccess = payload => ({
 
 export const updateArticle = payload => ({
   type: UPDATE_ARTICLE,
-  payload
-})
+  payload,
+});
 
-export const updateArticle = payload => ({
+export const updateArticleSuccess = payload => ({
   type: UPDATE_ARTICLE_SUCCESS,
-  payload
-})
+  payload,
+});
 
 export const createArticle = payload => ({
   type: CREATE_ARTICLE,
-  payload
-})
+  payload,
+});
 
-export const createArticle = payload => ({
+export const createArticleSuccess = payload => ({
   type: CREATE_ARTICLE_SUCCESS,
-  payload
-})
+  payload,
+});

@@ -9,6 +9,7 @@ export const ARTICLES_QUERY = `{
 
 export const ARTICLE_BY_ID_QUERY = articleId => `{
   article(id: "${articleId}") {
+    id
     title
     author
     content
@@ -23,19 +24,17 @@ export const DELETE_ARTICLE_QUERY = articleId => `{
   }
 }`;
 
-export const UPDATE_ARTICLE_QUERY = ({ id, author, content, excerpt, published, tags, title }) => `{
+export const UPDATE_ARTICLE_QUERY = ({ id, author, content, published, tags, title }) => `{
   updateArticle(
     id: "${id}",
     author: "${author}",
-    content: "${content}",
-    excerpt: "${excerpt}",
-    published: "${published}",
-    tags: "${tags}",
+    content: "Hola",
+    published: ${published},
+    tags: [${tags.map(tag => `"${tag}"`)}],
     title: "${title}",
   ) {
     author
     content
-    excerpt
     id
     published
     tags

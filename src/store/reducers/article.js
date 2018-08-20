@@ -17,7 +17,6 @@ export default (state = initialState, { type, response }) => {
       let { articles } = response;
       return { ...state, articles };
     case GET_ARTICLE_BY_ID_SUCCESS:
-    case UPDATE_ARTICLE_SUCCESS:
       let { article } = response;
       return { ...state, article };
     case DELETE_ARTICLE_SUCCESS:
@@ -25,6 +24,9 @@ export default (state = initialState, { type, response }) => {
       const newArticles = state.articles.filter(article => article.id !== id);
 
       return { ...state, articles: newArticles };
+    case UPDATE_ARTICLE_SUCCESS:
+      let { updateArticle } = response;
+      return { ...state, article: updateArticle };
     default:
       return state;
   }
