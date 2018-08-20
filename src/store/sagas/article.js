@@ -1,7 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { history } from 'app/AppWithNavigation';
 
-import { ARTICLES_QUERY, ARTICLE_BY_ID_QUERY, DELETE_ARTICLE_QUERY } from 'graphql/queries';
+import {
+  ARTICLES_QUERY,
+  ARTICLE_BY_ID_QUERY,
+  DELETE_ARTICLE_QUERY,
+  UPDATE_ARTICLE_QUERY,
+  ADD_ARTICLE_QUERY,
+} from 'graphql/queries';
 import { articleRequest } from 'graphql/request';
 
 import { SET_LOADING } from 'store/actions/loading';
@@ -12,6 +18,8 @@ import {
   GET_ARTICLE_BY_ID_SUCCESS,
   DELETE_ARTICLE,
   DELETE_ARTICLE_SUCCESS,
+  UPDATE_ARTICLE,
+  UPDATE_ARTICLE_SUCCESS,
 } from 'store/actions/article';
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -53,6 +61,11 @@ function deleteArticle$({ payload }) {
   return sagaWithLoader({ query, url: '/delete', successAction: DELETE_ARTICLE_SUCCESS });
 }
 
+function updateArticle$({ payload }) {
+  const query = UPDATE_ARTICLE_QUERY(payload);
+  return sagasWithLoader({ query, url: '/update', successAction: UPDATE_ARTICLE_SUCCESS });
+}
+
 export function* fetchAllArticles() {
   yield takeLatest(GET_ALL_ARTICLES, fetchArticles$);
 }
@@ -63,4 +76,8 @@ export function* fetchArticleById() {
 
 export function* deleteArticleById() {
   yield takeLatest(DELETE_ARTICLE, deleteArticle$);
+}
+
+export function* updateArticleById() {
+  yield takeLatest(UPDATE_ARTICLE, updateArticle$)
 }

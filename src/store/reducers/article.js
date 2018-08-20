@@ -2,6 +2,8 @@ import {
   GET_ALL_ARTICLES_SUCCESS,
   GET_ARTICLE_BY_ID_SUCCESS,
   DELETE_ARTICLE_SUCCESS,
+  UPDATE_ARTICLE_SUCCESS,
+  CREATE_ARTICLE_SUCCESS,
 } from 'store/actions/article';
 
 const initialState = {
@@ -12,13 +14,14 @@ const initialState = {
 export default (state = initialState, { type, response }) => {
   switch (type) {
     case GET_ALL_ARTICLES_SUCCESS:
-      const { articles } = response;
+      let { articles } = response;
       return { ...state, articles };
     case GET_ARTICLE_BY_ID_SUCCESS:
-      const { article } = response;
+    case UPDATE_ARTICLE_SUCCESS:
+      let { article } = response;
       return { ...state, article };
     case DELETE_ARTICLE_SUCCESS:
-      const { id } = response.deleteArticle;
+      let { id } = response.deleteArticle;
       const newArticles = state.articles.filter(article => article.id !== id);
 
       return { ...state, articles: newArticles };
