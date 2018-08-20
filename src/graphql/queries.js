@@ -24,7 +24,14 @@ export const DELETE_ARTICLE_QUERY = articleId => `{
   }
 }`;
 
-export const UPDATE_ARTICLE_QUERY = ({ id, author, content, published, tags, title }) => `{
+export const UPDATE_ARTICLE_QUERY = ({
+  id,
+  author = '',
+  content = '',
+  published = '',
+  tags = [],
+  title = '',
+}) => `{
   updateArticle(
     id: "${id}",
     author: "${author}",

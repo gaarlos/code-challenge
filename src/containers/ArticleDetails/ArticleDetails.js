@@ -7,14 +7,24 @@ class ArticleDetails extends React.Component {
 
     this.state = {
       author: props.author,
-      content: props.content,
+      content: `${props.content}`,
       published: props.published,
       tags: props.tags,
       title: props.title,
+      withChanges: true,
     };
 
+    this.handleSaveChanges = this.handleSaveChanges.bind(this)
     this.addTags = this.addTags.bind(this);
     this.removeTag = this.removeTag.bind(this);
+  }
+
+  handleSaveChanges() {
+    const { saveChanges, id } = this.props;
+    const { author, published, content, tags, title } = this.state;
+    const newArticle = { id, author, published, content, tags, title };
+
+    saveChanges({ article: newArticle });
   }
 
   addTags(event) {
@@ -48,13 +58,14 @@ class ArticleDetails extends React.Component {
   }
 
   render() {
-    const { author, published, content, tags, title } = this.state;
+    const { author, published, content, tags, title, withChanges } = this.state;
 
     return (
       <div className="article-details">
         <div className="article-details--header">
           <span className="title">{title}</span>
           <span className="author">{`${author} - ${published ? 'Published' : 'Not published'}`}</span>
+          {withChanges && <div className="btn save-button" onClick={this.handleSaveChanges}>Save</div>}
         </div>
         <div className="article-details--body">
           {content.split(/\r?\n/).join('\r\n\r\n')}
@@ -80,7 +91,9 @@ export default ArticleDetails;
 ArticleDetails.propTypes = {
   author: PropTypes.string,
   content: PropTypes.string,
+  id: PropTypes.string,
   published: PropTypes.bool,
+  saveChanges: PropTypes.func,
   tags: PropTypes.array,
   title: PropTypes.string,
 };

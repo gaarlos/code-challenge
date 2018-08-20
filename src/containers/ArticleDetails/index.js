@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import WithDidMountAction from 'components/WithDidMountAction';
 import WithLoading from 'components/WithLoading';
-import { getArticleById } from 'store/actions/article';
+import { getArticleById, updateArticle } from 'store/actions/article';
 import ArticleDetails from './ArticleDetails';
 
 const mapStateToProps = ({ article, loading }) => {
-  const { title = '', author = '', published = false, content = '', tags = [] } = article.article;
+  const { id, title = '', author = '', published = false, content = '', tags = [] } = article.article;
 
   return ({
+    id,
     title,
     author,
     published,
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch, { match }) => {
 
   return {
     handleDidMountAction: () => dispatch(getArticleById({ articleId })),
+    saveChanges: ({ article }) => dispatch(updateArticle({ article })),
   };
 };
 

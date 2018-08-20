@@ -62,7 +62,7 @@ function deleteArticle$({ payload }) {
 }
 
 function updateArticle$({ payload }) {
-  const query = UPDATE_ARTICLE_QUERY(payload);
+  const query = UPDATE_ARTICLE_QUERY(payload.article);
   return sagaWithLoader({ query, url: '/update', successAction: UPDATE_ARTICLE_SUCCESS });
 }
 
