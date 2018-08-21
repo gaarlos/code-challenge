@@ -152,6 +152,25 @@ input:focus {
   animation: fadein 0.25s;
 }
 
+.articles-new-article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 40px;
+  right: 5px;
+  transform: translateY(-50%);
+  font-size: 3em;
+  width: 36px;
+  height: 36px;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+  mix-blend-mode: screen;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .article {
   display: flex;
   flex-direction: column;
@@ -310,6 +329,10 @@ input:focus {
   .content {
     max-width: 900px;
     margin: 0 auto;
+  }
+
+  .articles-new-article {
+    right: 20px;
   }
 
   .save-button {

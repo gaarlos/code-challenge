@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { history } from 'app/AppWithNavigation';
 import Article from 'components/Article';
 
-const ArticlesView = ({ articles, handleOnClick, deleteArticle }) => (
+const ArticlesView = ({ articles, handleOnClick, deleteArticle }) => ([
+  <div className="articles-new-article" onClick={() => history.push('/create')}>+</div>,
   <div className="articles-container">
     {articles.map(article => (
       <Article
@@ -13,8 +15,8 @@ const ArticlesView = ({ articles, handleOnClick, deleteArticle }) => (
         deleteArticle={deleteArticle}
       />
     ))}
-  </div>
-);
+  </div>,
+]);
 
 export default ArticlesView;
 
