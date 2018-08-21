@@ -24,7 +24,7 @@ class ArticleDetails extends React.Component {
   handleSaveChanges = () => {
     const { saveChanges } = this.props;
     const { author, published, content, tags, title } = this.state;
-    const formattedContent = encodeURI(content);
+    const formattedContent = encodeURI(content.trim());
     const newArticle = { author, published, content: formattedContent, tags, title };
 
     saveChanges({ article: newArticle });

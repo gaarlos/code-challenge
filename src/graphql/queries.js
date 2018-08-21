@@ -28,7 +28,7 @@ export const UPDATE_ARTICLE_QUERY = ({
   id,
   author = '',
   content = '',
-  published = '',
+  published = false,
   tags = [],
   title = '',
 }) => `{
@@ -36,12 +36,14 @@ export const UPDATE_ARTICLE_QUERY = ({
     id: "${id}",
     author: "${author}",
     content: "${content}",
+    excerpt: "${content.slice(0, 350)}",
     published: ${published},
     tags: [${tags.map(tag => `"${tag}"`)}],
     title: "${title}",
   ) {
     author
     content
+    excerpt
     id
     published
     tags
@@ -49,19 +51,24 @@ export const UPDATE_ARTICLE_QUERY = ({
   }
 }`;
 
-export const ADD_ARTICLE_QUERY = ({ author, content, excerpt, published, tags, title }) => `{
+export const ADD_ARTICLE_QUERY = ({
+  author = 'No one',
+  content = 'Nothing',
+  published = false,
+  tags = [],
+  title = 'No title',
+}) => `{
   addArticle(
     author: "${author}",
     content: "${content}",
-    excerpt: "${excerpt}",
-    published: "${published}",
-    tags: "${tags}",
+    excerpt: "${content.slice(0, 350)}",
+    published: ${published},
+    tags: [${tags.map(tag => `"${tag}"`)}],
     title: "${title}",
   ) {
     author
     content
     excerpt
-    id
     published
     tags
     title

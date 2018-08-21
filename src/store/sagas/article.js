@@ -20,6 +20,7 @@ import {
   DELETE_ARTICLE_SUCCESS,
   UPDATE_ARTICLE,
   UPDATE_ARTICLE_SUCCESS,
+  CREATE_ARTICLE,
 } from 'store/actions/article';
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -66,6 +67,11 @@ function updateArticle$({ payload }) {
   return sagaWithLoader({ query, url: '/update', successAction: UPDATE_ARTICLE_SUCCESS });
 }
 
+function createArticle$({ payload }) {
+  const query = ADD_ARTICLE_QUERY(payload.article);
+  return sagaWithLoader({ query, url: '/create' });
+}
+
 export function* fetchAllArticles() {
   yield takeLatest(GET_ALL_ARTICLES, fetchArticles$);
 }
@@ -79,5 +85,9 @@ export function* deleteArticleById() {
 }
 
 export function* updateArticleById() {
-  yield takeLatest(UPDATE_ARTICLE, updateArticle$)
+  yield takeLatest(UPDATE_ARTICLE, updateArticle$);
+}
+
+export function* createArticle() {
+  yield takeLatest(CREATE_ARTICLE, createArticle$);
 }

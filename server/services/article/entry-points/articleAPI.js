@@ -4,7 +4,7 @@ import FetchArticleSchema from '../domain/fetchArticleService';
 import MutateArticleSchema from '../domain/mutateArticleService';
 
 const router = express.Router();
-const mutateRoutes = ['/update', '/delete', '/add'];
+const mutateRoutes = ['/update', '/delete', '/create'];
 
 router.post(
   '/',
