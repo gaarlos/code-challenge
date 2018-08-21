@@ -35,7 +35,7 @@ export const UPDATE_ARTICLE_QUERY = ({
   updateArticle(
     id: "${id}",
     author: "${author}",
-    content: "Hola",
+    content: "${content}",
     published: ${published},
     tags: [${tags.map(tag => `"${tag}"`)}],
     title: "${title}",

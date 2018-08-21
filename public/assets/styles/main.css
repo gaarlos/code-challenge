@@ -239,8 +239,13 @@ input:focus {
 }
 
 .article-details--body {
-  padding-bottom: 1em;
-  white-space: pre-line;
+  border: none;
+  width: 100%;
+  margin: 2em 0;
+  white-space: pre-wrap;
+  resize: none;
+  outline: none;
+  font-family: OpenSans, sans-serif;
 }
 
 .article-details--footer {

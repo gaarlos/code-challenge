@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AutosizeInput from 'react-input-autosize';
+import AutosizeTextarea from 'react-textarea-autosize';
 
 import TagsInput from 'components/Tags';
 
@@ -23,18 +24,19 @@ class ArticleDetails extends React.Component {
   handleSaveChanges = () => {
     const { saveChanges } = this.props;
     const { author, published, content, tags, title } = this.state;
-    const newArticle = { author, published, content, tags, title };
+    const formattedContent = encodeURI(content);
+    const newArticle = { author, published, content: formattedContent, tags, title };
 
     saveChanges({ article: newArticle });
   }
 
-  handleOnTagsChange = (newTags) => {
+  handleOnTagsChange = newTags => {
     this.setState({
       tags: newTags,
     });
   }
 
-  handleOnTitleChange = (event) => {
+  handleOnTitleChange = event => {
     const newTitle = event.target.value;
 
     this.setState({
@@ -42,11 +44,19 @@ class ArticleDetails extends React.Component {
     });
   }
 
-  handleOnAuthorChange = (event) => {
+  handleOnAuthorChange = event => {
     const newAuthor = event.target.value;
 
     this.setState({
       author: newAuthor,
+    });
+  }
+
+  handleOnContentChange = event => {
+    const newContent = event.target.value;
+
+    this.setState({
+      content: newContent,
     });
   }
 
@@ -63,9 +73,7 @@ class ArticleDetails extends React.Component {
           </div>
           <div className="btn save-button" onClick={this.handleSaveChanges}>Save</div>
         </div>
-        <div className="article-details--body">
-          {content.split(/\r?\n/).join('\r\n\r\n')}
-        </div>
+        <AutosizeTextarea className="article-details--body" onChange={this.handleOnContentChange} placeholder="Your content goes here..." value={content} />
         <TagsInput tags={tags} onChange={this.handleOnTagsChange} />
       </div>
     );
