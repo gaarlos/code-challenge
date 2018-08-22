@@ -7,7 +7,7 @@ import Article from 'components/Article';
 const ArticlesView = ({ articles, handleOnClick, deleteArticle }) => ([
 <div className="articles-new-article" onClick={() => history.push('/create')} key="add-article">+</div>,
   <div className="articles-container" key="articles">
-    {articles.map(article => (
+    {articles.reverse().map(article => (
       <Article
         key={article.id}
         article={article}

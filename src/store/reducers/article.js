@@ -3,7 +3,6 @@ import {
   GET_ARTICLE_BY_ID_SUCCESS,
   DELETE_ARTICLE_SUCCESS,
   UPDATE_ARTICLE_SUCCESS,
-  CREATE_ARTICLE_SUCCESS,
 } from 'store/actions/article';
 
 const initialState = {
