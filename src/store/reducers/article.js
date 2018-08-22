@@ -14,7 +14,7 @@ export default (state = initialState, { type, response }) => {
   switch (type) {
     case GET_ALL_ARTICLES_SUCCESS:
       let { articles } = response;
-      return { ...state, articles };
+      return { ...state, articles: articles.reverse() };
     case GET_ARTICLE_BY_ID_SUCCESS:
       let { article } = response;
       return { ...state, article };

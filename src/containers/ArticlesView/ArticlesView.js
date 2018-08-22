@@ -5,9 +5,9 @@ import { history } from 'app/AppWithNavigation';
 import Article from 'components/Article';
 
 const ArticlesView = ({ articles, handleOnClick, deleteArticle }) => ([
-<div className="articles-new-article" onClick={() => history.push('/create')} key="add-article">+</div>,
+  <div className="articles-new-article" onClick={() => history.push('/create')} key="add-article">+</div>,
   <div className="articles-container" key="articles">
-    {articles.reverse().map(article => (
+    {articles.map(article => (
       <Article
         key={article.id}
         article={article}
