@@ -4,7 +4,7 @@ import {
   fetchArticleById,
   deleteArticleById,
   updateArticleById,
-  createArticle,
+  createNewArticle,
 } from './article';
 import { history } from 'app/AppWithNavigation';
 
@@ -15,7 +15,7 @@ export default function* rootSaga() {
       fetchArticleById(),
       deleteArticleById(),
       updateArticleById(),
-      createArticle(),
+      createNewArticle(),
     ]);
   } catch (e) {
     history.replace(`/error/${404}`);

@@ -25,7 +25,7 @@ import {
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
-function* sagaWithLoader({ query, url, successAction, successActionPayload }) {
+function* sagaWithLoader({ query, url, successAction, successActionPayload, finishFunction }) {
   try {
     yield put({ type: SET_LOADING, payload: true });
     yield call(delay, 500);
@@ -42,6 +42,10 @@ function* sagaWithLoader({ query, url, successAction, successActionPayload }) {
     }
 
     yield put({ type: SET_LOADING, payload: false });
+
+    if (finishFunction) {
+      finishFunction();
+    }
   } catch (e) {
     history.replace(`/error/${404}`);
   }
@@ -69,7 +73,7 @@ function updateArticle$({ payload }) {
 
 function createArticle$({ payload }) {
   const query = ADD_ARTICLE_QUERY(payload.article);
-  return sagaWithLoader({ query, url: '/create' });
+  return sagaWithLoader({ query, url: '/create', finishFunction: () => history.replace('/') });
 }
 
 export function* fetchAllArticles() {
@@ -88,6 +92,6 @@ export function* updateArticleById() {
   yield takeLatest(UPDATE_ARTICLE, updateArticle$);
 }
 
-export function* createArticle() {
+export function* createNewArticle() {
   yield takeLatest(CREATE_ARTICLE, createArticle$);
 }
