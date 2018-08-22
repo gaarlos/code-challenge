@@ -24,8 +24,9 @@ class ArticleDetails extends React.Component {
   handleSaveChanges = () => {
     const { saveChanges } = this.props;
     const { author, published, content, tags, title } = this.state;
+    const excerpt = encodeURI(content.trim().slice(0, 350));
     const formattedContent = encodeURI(content.trim());
-    const newArticle = { author, published, content: formattedContent, tags, title };
+    const newArticle = { author, published, content: formattedContent, excerpt, tags, title };
 
     saveChanges({ article: newArticle });
   }
@@ -60,6 +61,10 @@ class ArticleDetails extends React.Component {
     });
   }
 
+  handleOnPublish = () => this.setState({
+    published: true,
+  });
+
   render() {
     const { author, published, content, tags, title } = this.state;
 
@@ -69,11 +74,16 @@ class ArticleDetails extends React.Component {
           <AutosizeInput value={title} className="title" placeholder="Title" onChange={this.handleOnTitleChange} />
           <div className="author">
             <AutosizeInput value={author} placeholder="Author" onChange={this.handleOnAuthorChange} />
-            <span>{` - ${published ? 'Published' : 'Not published'}`}</span>
+            <span>{'\u00A0-\u00A0'}</span>
+            {
+              published
+                ? <span>Published</span>
+                : [<span key="text">Not published&nbsp;</span>, <span key="publish" className="publish" onClick={this.handleOnPublish}>(publish)</span>]
+            }
           </div>
           <div className="btn save-button" onClick={this.handleSaveChanges}>Save</div>
         </div>
-        <AutosizeTextarea className="article-details--body" onChange={this.handleOnContentChange} placeholder="Your content goes here..." value={content} />
+        <AutosizeTextarea className="article-details--body" onChange={this.handleOnContentChange} spellCheck="false" placeholder="Your content goes here..." value={content} />
         <TagsInput tags={tags} onChange={this.handleOnTagsChange} />
       </div>
     );

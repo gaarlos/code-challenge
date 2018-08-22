@@ -238,6 +238,14 @@ input:focus {
   color: grey;
 }
 
+.article-details--header .publish {
+  cursor: pointer;
+}
+
+.article-details--header .publish:hover {
+  text-decoration: underline;
+}
+
 .article-details--body {
   border: none;
   width: 100%;

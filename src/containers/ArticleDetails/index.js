@@ -11,7 +11,7 @@ const mapStateToProps = ({ article, loading }) => {
     title,
     author,
     published,
-    content: decodeURI(content).trim(),
+    content: decodeURI(content.trim()),
     tags,
     loading,
   });
